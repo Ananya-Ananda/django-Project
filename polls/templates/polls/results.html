@@ -1,9 +1,21 @@
-<h1>{{ question.question_text }}</h1>
+<nav class="nav">
+    <a class="nav-link" href="#">Questions</a>
+    <a class="nav-link Active" aria-current="page" href="#">Results</a>
+    <a class="nav-link" href="#">Add Comment</a>
+    <a class="nav-link" href="#">Comments</a>
+</nav>
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+<div class="mx-auto" style="padding:5%;">
+    <h1>{{ question.question_text }}</h1>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+    <ul>
+    {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+    {% endfor %}
+    </ul>
+
+    <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+</div>
+<footer class="mt-auto">
+    
+</footer>

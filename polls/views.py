@@ -1,9 +1,9 @@
 from django.shortcuts import get_object_or_404, render
-from django.http import HttpResponseRedirect
+from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
-from .models import Question, Choice
+from .models import Question, Choice, Comment
 
 class IndexView(generic.ListView):
     template_name = 'polls/index.html'
@@ -43,3 +43,20 @@ def vote(request, question_id):
         # with POST data. This prevents data from being posted twice if a
         # user hits the Back button.
         return HttpResponseRedirect(reverse('polls:results', args=(question.id,)))
+
+def commentForm(request):
+    return render(request,'polls/comments.html',{})
+
+class CommentList(generic.ListView):
+    model = Comment
+    all_comments = Comment.objects.all()
+    template_name = 'polls/list.html'
+
+def submitComment(request):
+    if request.method == "POST":
+        comment = request.POST['postComment']
+        c = Comment(comment_text = comment)
+        c.save()
+        return HttpResponseRedirect(reverse('polls:list'))
+        
+    
