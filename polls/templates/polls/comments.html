@@ -1,5 +1,6 @@
-
-
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
 <form action="{%url 'polls:submitComment'%}" method="post">
     {% csrf_token %}
     <input type="text" name='postComment'id="postComment"/>

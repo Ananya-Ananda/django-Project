@@ -1,3 +1,7 @@
+{% load bootstrap5 %}
+{% bootstrap_css %}
+{% bootstrap_javascript %}
+
 <nav class="nav">
     <a class="nav-link" href="#">Questions</a>
     <a class="nav-link Active" aria-current="page" href="#">Results</a>
@@ -16,6 +20,8 @@
 
     <a href="{% url 'polls:detail' question.id %}">Vote again?</a>
 </div>
-<footer class="mt-auto">
-    
+<footer class="mt-auto" >
+    <div class="container-fluid bg-dark text-light mt-5 pt-5">
+        
+    </div>
 </footer>
