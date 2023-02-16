@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Question, Choice
+from .models import Question, Choice, Comment
 
 class ChoiceInline(admin.TabularInline):
     model = Choice
@@ -14,6 +14,10 @@ class QuestionAdmin(admin.ModelAdmin):
     list_filter = ['pub_date']
     search_fields = ['question_text']
 
+class CommentAdmin(admin.ModelAdmin):
+    comment = ('comment_text')
+
 # pass in model admin class anytime you need
 # to change admin options for a model
 admin.site.register(Question, QuestionAdmin) 
+admin.site.register(Comment, CommentAdmin)
